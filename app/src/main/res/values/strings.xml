@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Sprint_26</string>
+    <string name="image_description">Аватар контакта</string>
+    <string name="is_favourite_desc">Контакт в избранных</string>
+    <string name="phone_title">Телефон:</string>
+    <string name="address_title">Адрес:</string>
+    <string name="email_title">Email:</string>
+    
+    <string name="name_example_1">Евгений</string>
+    <string name="surname_example_1">Андреевич</string>
+    <string name="family_name_example_1">Лукашин</string>
+    <string name="phone_example_1">+7 495 495 95 95</string>
+    <string name="address_example_1">г. Москва, 3-я улица Строителей, д. 25, кв. 12</string>
+    <string name="email_example_1">ELukashin@practicum.ru</string>
+
+    <string name="name_example_2">Василий</string>
+    <string name="family_name_example_2">Кузякин</string>
+    <string name="phone_example_2">---</string>
+    <string name="address_example_2">Ивановская область, дер. Крутово, д.4</string>
 </resources>
