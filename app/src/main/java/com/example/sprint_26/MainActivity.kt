@@ -12,24 +12,12 @@ class MainActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ContactDetails(getContact1())
+            ContactDetails(contactExample1())
         }
     }
 
-    @Preview( name = "portrait", showSystemUi = true)
     @Composable
-    fun ContactDetailsPreview1() {
-        ContactDetails(getContact1())
-    }
-
-    @Preview( name = "portrait", showSystemUi = true)
-    @Composable
-    fun ContactDetailsPreview2() {
-        ContactDetails(getContact2())
-    }
-
-    @Composable
-    private fun getContact1() : Contact {
+    private fun contactExample1() : Contact {
         return Contact(
             name = stringResource(R.string.name_example_1),
             surname = stringResource(R.string.surname_example_1),
@@ -43,7 +31,7 @@ class MainActivity: ComponentActivity() {
     }
 
     @Composable
-    private fun getContact2() : Contact {
+    private fun contactExample2() : Contact {
         return Contact(
             name = stringResource(R.string.name_example_2),
             surname = null,
@@ -54,5 +42,17 @@ class MainActivity: ComponentActivity() {
             address = stringResource(R.string.address_example_2),
             email = null
         )
+    }
+
+    @Preview( name = "portrait", showSystemUi = true)
+    @Composable
+    fun ContactDetailsPreview1() {
+        ContactDetails(contactExample1())
+    }
+
+    @Preview( name = "portrait", showSystemUi = true)
+    @Composable
+    fun ContactDetailsPreview2() {
+        ContactDetails(contactExample2())
     }
 }

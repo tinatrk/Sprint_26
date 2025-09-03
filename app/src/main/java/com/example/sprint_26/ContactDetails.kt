@@ -12,6 +12,10 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,7 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ContactDetails(contact: Contact){
+fun ContactDetails(contact: Contact) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -40,7 +44,7 @@ fun ContactDetails(contact: Contact){
                     .weight(0.5F),
                 contentAlignment = Alignment.Center
             ) {
-                SetImage(contact)
+                ProfileImage(contact)
             }
 
             Column(
@@ -49,7 +53,7 @@ fun ContactDetails(contact: Contact){
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                SetName(contact)
+                NameContent(contact)
             }
         }
         Column(
@@ -57,15 +61,15 @@ fun ContactDetails(contact: Contact){
                 .fillMaxWidth()
                 .weight(0.75F),
         ) {
-            SetInfoRow(
+            InfoRow(
                 title = stringResource(R.string.phone_title),
                 info = contact.phone
             )
-            SetInfoRow(
+            InfoRow(
                 title = stringResource(R.string.address_title),
                 info = contact.address
             )
-            SetInfoRow(
+            InfoRow(
                 title = stringResource(R.string.email_title),
                 info = contact.email
             )
@@ -74,12 +78,12 @@ fun ContactDetails(contact: Contact){
 }
 
 @Composable
-fun SetName(contact: Contact) {
+fun NameContent(contact: Contact) {
     Text(
-        text = "${contact.name} ${contact.surname ?: ""}",
+        text = contact.name,
         style = MaterialTheme.typography.h6
     )
-    Row (
+    Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
@@ -97,7 +101,7 @@ fun SetName(contact: Contact) {
 }
 
 @Composable
-fun SetImage(contact: Contact) {
+fun ProfileImage(contact: Contact) {
     if (contact.imageRes != null)
         Image(
             modifier = Modifier
@@ -132,14 +136,16 @@ fun getInitials(name: String, familyName: String): String {
 }
 
 @Composable
-fun SetInfoRow(title: String, info: String?) {
+fun InfoRow(title: String, info: String?) {
     if (info != null) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(end = 16.dp, top = 16.dp, start = 16.dp),
         ) {
             Text(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .weight(0.5F),
                 text = title,
                 style = MaterialTheme.typography.body1,
@@ -147,7 +153,8 @@ fun SetInfoRow(title: String, info: String?) {
                 textAlign = TextAlign.End
             )
             Text(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .weight(0.5F)
                     .padding(start = 16.dp),
                 text = info,
